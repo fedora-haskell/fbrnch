@@ -97,7 +97,7 @@ Features include:
 
 
 %install
-install -D -t %{buildroot}%{_bindir} dist-newstyle/build/x86_64-linux/ghc-8.6.5/fbrnch-0.1/x/fbrnch/build/fbrnch/fbrnch
+install -D -t %{buildroot}%{_bindir} dist-newstyle/build/%{_arch}-linux/ghc-8.6.5/fbrnch-0.1/x/fbrnch/build/fbrnch/fbrnch
 
 
 %files

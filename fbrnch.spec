@@ -13,7 +13,7 @@
 
 Name:           fbrnch
 Version:        0.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Build and create Fedora package repos and branches
 
 License:        GPLv2+
@@ -66,6 +66,8 @@ BuildRequires:  ghc-zlib-bindings-devel
 BuildRequires:  git-core
 # for HsOpenSSL
 BuildRequires:  openssl-devel
+# manpage
+BuildRequires:  help2man
 Requires:       bodhi-client
 Requires:       curl
 Requires:       fedpkg
@@ -99,9 +101,13 @@ Features include:
 
 
 %install
-install -D -t %{buildroot}%{_bindir} dist-newstyle/build/%{_arch}-linux/ghc-*/%{name}-%{version}/x/fbrnch/build/fbrnch/fbrnch
+%define binfile dist-newstyle/build/%{_arch}-linux/ghc-*/%{name}-%{version}/x/fbrnch/build/fbrnch/fbrnch
+install -D -t %{buildroot}%{_bindir} %{binfile}
 
 install -pm 644 -D %{SOURCE1} %{buildroot}%{_datadir}/bash-completion/completions/%{name}
+
+help2man --no-info %{binfile} > %{name}.man
+install -pm 644 -D %{name}.man %{buildroot}%{_mandir}/man1/%{name}.1
 
 
 %files
@@ -111,9 +117,13 @@ install -pm 644 -D %{SOURCE1} %{buildroot}%{_datadir}/bash-completion/completion
 %{_bindir}/%{name}
 # End cabal-rpm files
 %{_datadir}/bash-completion/completions/%{name}
+%{_mandir}/man1/%{name}.1*
 
 
 %changelog
+* Thu Jul 23 2020 Jens Petersen <petersen@redhat.com> - 0.2-3
+- generate a basic manpage with help2man
+
 * Thu Jul 23 2020 Jens Petersen <petersen@redhat.com> - 0.2-2 (9b8982d)
 - further simply the option/arg parsing for better error messages
 

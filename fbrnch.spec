@@ -13,7 +13,7 @@
 
 Name:           fbrnch
 Version:        0.3
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Build and create Fedora package repos and branches
 
 License:        GPLv2+
@@ -103,6 +103,7 @@ Features include:
 
 %install
 %define binfile dist-newstyle/build/%{_arch}-linux/ghc-*/%{name}-%{version}/x/fbrnch/build/fbrnch/fbrnch
+strip %{binfile}
 install -D -t %{buildroot}%{_bindir} %{binfile}
 
 install -pm 644 -D %{SOURCE1} %{buildroot}%{_datadir}/bash-completion/completions/%{name}
@@ -122,6 +123,9 @@ install -pm 644 -D %{name}.man %{buildroot}%{_mandir}/man1/%{name}.1
 
 
 %changelog
+* Fri Aug  7 2020 Jens Petersen <petersen@redhat.com> - 0.3-4
+- strip executable
+
 * Fri Aug  7 2020 Jens Petersen <petersen@redhat.com> - 0.3-3 (a07a33b)
 - add 'install-deps' (builddep) command
 - experimental --exclude-branch option

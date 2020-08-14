@@ -108,8 +108,8 @@ install -D -t %{buildroot}%{_bindir} %{binfile}
 
 install -pm 644 -D %{SOURCE1} %{buildroot}%{_datadir}/bash-completion/completions/%{name}
 
-help2man --no-info %{binfile} > %{name}.man
-install -pm 644 -D %{name}.man %{buildroot}%{_mandir}/man1/%{name}.1
+#help2man --no-info %%{buildroot}%%{_bindir}/%%{name} > %%{name}.man
+#install -pm 644 -D %%{name}.man %%{buildroot}%%{_mandir}/man1/%%{name}.1
 
 
 %files
@@ -119,7 +119,7 @@ install -pm 644 -D %{name}.man %{buildroot}%{_mandir}/man1/%{name}.1
 %{_bindir}/%{name}
 # End cabal-rpm files
 %{_datadir}/bash-completion/completions/%{name}
-%{_mandir}/man1/%{name}.1*
+#%%{_mandir}/man1/%%{name}.1*
 
 
 %changelog

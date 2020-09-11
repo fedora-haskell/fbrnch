@@ -44,9 +44,7 @@ BuildRequires:  ghc-http-directory-devel
 BuildRequires:  ghc-network-uri-devel
 BuildRequires:  ghc-optparse-applicative-devel
 #BuildRequires:  ghc-pagure-devel
-%if 0%{?fedora} >= 33
 BuildRequires:  ghc-rpmbuild-order-devel
-%endif
 BuildRequires:  ghc-simple-cmd-devel
 BuildRequires:  ghc-simple-cmd-args-devel
 BuildRequires:  ghc-text-devel
@@ -66,8 +64,11 @@ BuildRequires:  ghc-utf8-string-devel
 BuildRequires:  ghc-zlib-bindings-devel
 # for cabal.project repos
 BuildRequires:  git-core
-# for HsOpenSSL
+%if 0%{?fedora} >= 33
+BuildRequires:  ghc-HsOpenSSL-devel
+%else
 BuildRequires:  openssl-devel
+%endif
 # manpage
 BuildRequires:  help2man
 Requires:       bodhi-client

@@ -10,7 +10,7 @@
 %global debug_package %{nil}
 
 Name:           fbrnch
-Version:        0.6.2
+Version:        0.6.3
 Release:        1%{?dist}
 Summary:        Build and create Fedora package repos and branches
 
@@ -123,7 +123,14 @@ install -pm 644 -D %{name}.man %{buildroot}%{_mandir}/man1/%{name}.1
 
 
 %changelog
-* Wed Oct 21 2020 Jens Petersen <petersen@redhat.com> - 0.6.2-1
+* Wed Oct 21 2020 Jens Petersen <petersen@redhat.com> - 0.6.3-1
+- new 'branches' command lists package's branches
+- copr, mock: fix running in a package dir
+- mock: --network option
+- copr: revert restarting failed watch
+- improve errors for commands that only take zero or one branches
+
+* Tue Oct 20 2020 Jens Petersen <petersen@redhat.com>
 - build: fix bodhi update options error
 - merging to latest epel now works (from oldest active fedora branch)
 - status: fixed error on new branch

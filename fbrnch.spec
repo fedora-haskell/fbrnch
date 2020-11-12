@@ -10,7 +10,7 @@
 %global debug_package %{nil}
 
 Name:           fbrnch
-Version:        0.6.3
+Version:        0.6.4
 Release:        1%{?dist}
 Summary:        Build and create Fedora package repos and branches
 
@@ -123,6 +123,12 @@ install -pm 644 -D %{name}.man %{buildroot}%{_mandir}/man1/%{name}.1
 
 
 %changelog
+* Thu Nov 12 2020 Jens Petersen <petersen@redhat.com> - 0.6.4-1
+- Bugzilla: fix updating of bugs and check for error
+- import: offer to request-branches after build
+- branches: can now take branch args and --missing option
+- request-repo: thank reviewer by first name
+
 * Wed Oct 21 2020 Jens Petersen <petersen@redhat.com> - 0.6.3-1
 - new 'branches' command lists package's branches
 - copr, mock: fix running in a package dir

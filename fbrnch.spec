@@ -10,14 +10,14 @@
 %global debug_package %{nil}
 
 Name:           fbrnch
-Version:        0.6.4
+Version:        0.6.5
 Release:        1%{?dist}
 Summary:        Build and create Fedora package repos and branches
 
 License:        GPLv2+
 Url:            https://github.com/juhp/fbrnch
 # Begin cabal-rpm sources:
-Source0:        https://github.com/juhp/fbrnch/archive/v%{version}.tar.gz#/fbrnch-%{version}.tar.gz
+Source0:        https://github.com/juhp/fbrnch/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # End cabal-rpm sources
 # made with `fbrnch --bash-completion-script fbrnch | sed s/filenames/default/`:
 Source1:        bash_completion
@@ -62,10 +62,13 @@ BuildRequires:  ghc-utf8-string-devel
 BuildRequires:  ghc-zlib-bindings-devel
 # for cabal.project repos
 BuildRequires:  git-core
-%if 0%{?fedora} >= 33
+%if 0%{?fedora} >= 32
 BuildRequires:  ghc-HsOpenSSL-devel
 %else
 BuildRequires:  openssl-devel
+%endif
+%if 0%{?fedora} >= 32
+BuildRequires:  ghc-HaXml-devel
 %endif
 # manpage
 BuildRequires:  help2man
@@ -123,6 +126,15 @@ install -pm 644 -D %{name}.man %{buildroot}%{_mandir}/man1/%{name}.1
 
 
 %changelog
+* Thu Dec  3 2020 Jens Petersen <petersen@redhat.com> - 0.6.5-1
+- support git worktrees (experimental)
+- branches: fix --missing output for given branch and add --skip-dead
+- git fetching now outputs new branches
+- build: only wait-repo if overriding or autoupdate
+- koji: improve uploading message
+- mock and scratch: --dryrun
+- add --all-fedora and --all-epel branch options (#15)
+
 * Thu Nov 12 2020 Jens Petersen <petersen@redhat.com> - 0.6.4-1
 - Bugzilla: fix updating of bugs and check for error
 - import: offer to request-branches after build

@@ -12,7 +12,7 @@
 Name:           fbrnch
 Version:        0.6.5
 Release:        1%{?dist}
-Summary:        Build and create Fedora package repos and branches
+Summary:        Fedora packager tool
 
 License:        GPLv2+
 Url:            https://github.com/juhp/fbrnch
@@ -88,11 +88,12 @@ Fed Brnch is a convenient packaging tool for Fedora Packagers, with integration
 for bugzilla, koji, and bodhi.
 
 Features include:
-- create and update package reviews and list them
+- parallel package building
+- merge between Fedora branches and build them
+- create, update and list package reviews
 - create repo and branch requests for new approved packages
 - import srpms from package reviews
-- merge between Fedora branches and build them
-- package status command.
+- progressive copr builds
 
 
 %prep

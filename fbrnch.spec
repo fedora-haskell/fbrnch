@@ -10,7 +10,7 @@
 %global debug_package %{nil}
 
 Name:           fbrnch
-Version:        0.6.5
+Version:        0.6.6
 Release:        1%{?dist}
 Summary:        Fedora packager tool
 
@@ -127,6 +127,10 @@ install -pm 644 -D %{name}.man %{buildroot}%{_mandir}/man1/%{name}.1
 
 
 %changelog
+* Thu Dec 17 2020 Jens Petersen <petersen@redhat.com> - 0.6.6-1
+- Bugzilla: use POST again for comments...
+- copr: print chroots when building
+
 * Thu Dec  3 2020 Jens Petersen <petersen@redhat.com> - 0.6.5-1
 - support git worktrees (experimental)
 - branches: fix --missing output for given branch and add --skip-dead

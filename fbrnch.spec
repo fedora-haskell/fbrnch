@@ -10,7 +10,7 @@
 %global debug_package %{nil}
 
 Name:           fbrnch
-Version:        0.6.7
+Version:        0.6.8
 Release:        1%{?dist}
 Summary:        Fedora packager tool
 
@@ -127,6 +127,12 @@ install -pm 644 -D %{name}.man %{buildroot}%{_mandir}/man1/%{name}.1
 
 
 %changelog
+* Sat Jan 16 2021 Jens Petersen <petersen@redhat.com> - 0.6.8-1
+- build: check bodhi client new update success more carefully
+- Bugzilla: correctly check that bug update succeeded
+- new 'list' command to list packages from pagure
+- branches: add --remote option
+
 * Wed Dec 23 2020 Jens Petersen <petersen@redhat.com> - 0.6.7-1
 - Bugzilla: don't conflate POST comment with PUT update
 - build/install: allow no branch arg for current directory

@@ -67,11 +67,10 @@ BuildRequires:  ghc-HsOpenSSL-devel
 %else
 BuildRequires:  openssl-devel
 %endif
-%if 0%{?fedora} >= 32
-BuildRequires:  ghc-HaXml-devel
 %if 0%{?fedora} >= 34
 BuildRequires:  ghc-haxr-devel
-%endif
+%else
+BuildRequires:  ghc-HaXml-devel
 %endif
 # manpage
 BuildRequires:  help2man

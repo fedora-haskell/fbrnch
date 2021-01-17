@@ -10,7 +10,7 @@
 %global debug_package %{nil}
 
 Name:           fbrnch
-Version:        0.6.8
+Version:        0.6.9
 Release:        1%{?dist}
 Summary:        Fedora packager tool
 
@@ -69,6 +69,9 @@ BuildRequires:  openssl-devel
 %endif
 %if 0%{?fedora} >= 32
 BuildRequires:  ghc-HaXml-devel
+%if 0%{?fedora} >= 34
+BuildRequires:  ghc-haxr-devel
+%endif
 %endif
 # manpage
 BuildRequires:  help2man
@@ -127,6 +130,10 @@ install -pm 644 -D %{name}.man %{buildroot}%{_mandir}/man1/%{name}.1
 
 
 %changelog
+* Sun Jan 17 2021 Jens Petersen <petersen@redhat.com> - 0.6.9-1
+- PkgReview: use fasid for ssh (#16)
+- Bugzilla: separate commentBug from updateBug
+
 * Sat Jan 16 2021 Jens Petersen <petersen@redhat.com> - 0.6.8-1
 - build: check bodhi client new update success more carefully
 - Bugzilla: correctly check that bug update succeeded

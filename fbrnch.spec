@@ -10,7 +10,7 @@
 %global debug_package %{nil}
 
 Name:           fbrnch
-Version:        0.6.9
+Version:        0.7.0.1
 Release:        1%{?dist}
 Summary:        Fedora packager tool
 
@@ -67,7 +67,7 @@ BuildRequires:  ghc-HsOpenSSL-devel
 %else
 BuildRequires:  openssl-devel
 %endif
-%if 0%{?fedora} >= 34
+%if 0%{?fedora} >= 33
 BuildRequires:  ghc-haxr-devel
 %else
 BuildRequires:  ghc-HaXml-devel
@@ -129,6 +129,27 @@ install -pm 644 -D %{name}.man %{buildroot}%{_mandir}/man1/%{name}.1
 
 
 %changelog
+* Fri Feb  5 2021 Jens Petersen <petersen@redhat.com> - 0.7.0.1-1
+- Srpm generation: error if spectool fails to download tarball
+
+* Fri Feb  5 2021 Jens Petersen <petersen@redhat.com> - 0.7.0-1
+- reworked branch/pkg arg processing
+  - `branches --remote` now works outside a repo
+- Master branches are now Rawhide
+- new 'master-rename' command: renames package master branches to rawhide
+- 'local'/'install': --with/--without bcond options
+- Koji: exit if aborting incomplete build (prevents premature bugzilla comment)
+- Bugzilla: updateBug result is Array not Object
+- 'build': for a new package use rpm Summary & Url for Bodhi note
+- 'build': offer to create a Bodhi update for an already built candidate nvr
+- new 'update' command: highly experimental package version updating
+- 'diff' now works for a different branch
+- 'request-branches' now posts pagure urls to package review too
+- 'import' prompts for branching after build
+- 'build': --no-prompt replaces --merge
+- Git: more readable shortlogs
+- 'parallel': only use --background if >5 packages in layer (#17)
+
 * Sun Jan 17 2021 Jens Petersen <petersen@redhat.com> - 0.6.9-1
 - PkgReview: use fasid for ssh (#16)
 - Bugzilla: separate commentBug from updateBug
